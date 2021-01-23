@@ -9,7 +9,6 @@ def main(*argv):
     tree = ET.parse(sys.argv[1])
     root = tree.getroot()
 
-    # for i in range(1613):
     for child in root:
         for obj in child.iter('object'):
 
@@ -32,10 +31,10 @@ def main(*argv):
                     y = []
 
                     for xPos in polygon.iter('x'):
-                        x.append(xPos.text)
+                        x.append(int(xPos.text)/sys.argv[2])
 
                     for yPos in polygon.iter('y'):
-                        y.append(yPos.text)
+                        y.append(int(yPos.text)/sys.argv[3])
 
                     file_obj.write(str(id) + ' ' + str(x[0]) + ' ' + str(y[0]) + ' ' + str(x[1]) + ' ' + str(y[1]) + '\n')
 
